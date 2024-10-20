@@ -1,0 +1,343 @@
+#components-layout-demo-basic .code-box-demo {
+    text-align: center;
+  }
+  #components-layout-demo-basic .ant-layout-header,
+  #components-layout-demo-basic .ant-layout-footer {
+    color: #fff;
+    background: white;
+    /* background-color: gray; */
+  }
+  [data-theme='dark'] #components-layout-demo-basic .ant-layout-header {
+    background: #6aa0c7;
+  }
+  [data-theme='dark'] #components-layout-demo-basic .ant-layout-footer {
+    background: #6aa0c7;
+  }
+  #components-layout-demo-basic .ant-layout-footer {
+    line-height: 1.5;
+  }
+  #components-layout-demo-basic .ant-layout-sider {
+    color: #fff;
+    line-height: 120px;
+    background: #3ba0e9;
+  }
+  [data-theme='dark'] #components-layout-demo-basic .ant-layout-sider {
+    background: #3499ec;
+  }
+  #components-layout-demo-basic .ant-layout-content {
+    min-height: 70%;
+    color: #fff;
+    line-height: 120px;
+    /* background: rgba(16, 142, 233, 1); */
+  }
+  [data-theme='dark'] #components-layout-demo-basic .ant-layout-content {
+    background: #107bcb;
+  }
+  #components-layout-demo-basic > .code-box-demo > .ant-layout + .ant-layout {
+    margin-top: 48px;
+  }
+  
+  .main {
+    width: 100%;
+    height:650px;
+    background-color: white;
+  }
+  .main .searchKuang {
+    height: 30%;
+    /* background-color: yellowgreen; */
+    position: relative;
+  }
+  .main .searchKuang .tubiao {
+    position: relative;
+    left: 45%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+  }
+  .main .searchKuang .tubiao img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    animation: rotate360 5s linear infinite; /* 5秒旋转一圈，循环无限 */
+  }
+  .main .showCtx {
+    height: 70%;
+    /* background-color: skyblue; */
+  }
+
+ .ant-input-search.ant-input-search-enter-button.ant-input-group-wrapper {
+    position:absolute;
+    left: 25%;
+    top: 70%;
+    width: 50%;
+ }
+
+ /* 搜索结果组件css */
+ .searchMagnetRes {
+    color: black;
+ }
+ .searchMagnetRes .demo-loadmore-list {
+    min-height: 350px;
+  }
+
+ /* 详情组件css */
+ .xiangqing {
+    color: black;
+ }
+
+ .xiangqing .ant-layout-header
+ {
+    background-color: #f7f8f9 !important;
+ }
+ .xiangqing .ant-layout-footer {
+    /* background-color: gray !important */
+ }
+
+ .xiangqing .boxHeader {
+    position: relative;
+    border-left: dashed 6px #dcdee1;
+    border-bottom: solid 4px #f1f3f5;
+ }
+ .xiangqing .boxHeader .hongxian {
+    position: absolute;
+    width: 10px;
+    height: 73px;
+    background-color: #d22f27;
+    left: 0px;
+    top: 0px;
+ }
+ .xiangqing .boxHeader #fengmian {
+    position: absolute;
+    right: 0px;
+    top: 15%;
+    width: 50px;
+    height: 80px;
+    border-radius: 30px;
+ }
+ .xiangqing .boxHeader ul {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    height: 183px;
+    border-left: dashed 3px #f1f3f5;
+ }
+ .xiangqing .boxHeader h1 {
+    font-size: 25px;
+    color: #282828;
+    font-family: '宋体';
+    position: absolute;
+    left: 5%;
+ }
+ .xiangqing .ctxtop{
+    position: relative;
+    color: #282828;
+    height: 50%;
+ }
+ .xiangqing .ctxtop p{
+    line-height: 28px !important;
+    margin: 0;
+    position: absolute;
+    width: 70%;
+    border-bottom: solid 4px #f1f3f5;
+    padding-bottom: 2%;
+ }
+ .xiangqing .ctxtop a{
+    position: absolute;
+    color: #f17a73;
+    font-family: '宋体';
+    left:35%;
+    top: 15%;
+ }
+ .xiangqing .ctxtop .triangle {
+     position: absolute;
+     left: 42%;
+     top: 37%;
+     width: 0;
+     height: 0;
+     border-left: 8.5px solid transparent; /* 1/2 宽度 */
+     border-right: 8.5px solid transparent; /* 1/2 宽度 */
+     border-top: 10px solid red; /* 倒立的三角形高度和颜色 */
+    }
+/* 显示收起有的类 */
+/* 三角 */
+.xiangqing .ctxtop .triangle.triangleRoate {
+    transform: rotate(180deg); /* 旋转180度 */
+    left: 38.5%;
+    top: 82%;
+}
+.xiangqing .ctxtop a.ashouqi {
+    top: 60%;
+}
+
+.xiangqing .ctxmain {
+    position: relative;
+    color: #282828;
+    height: 50%;
+}
+
+
+
+ .xiangqing .boxHeader ul li {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    list-style: none;
+    height: 30px;
+    font-size: 21px;
+    font-family: '宋体';
+    color: #4269a9;
+    border: solid 3px #ebedf0;
+    border-radius: 10px;
+    margin-left: 11px;
+    margin-top: 10%;
+ }
+ .xiangqing .boxHeader ul li:nth-child(1) {
+    left: 5%;
+    top: 15%;
+}
+.xiangqing .boxHeader ul li:nth-child(2) {
+    left: 15%;
+    top: 15%;
+}
+.xiangqing .boxHeader ul li:nth-child(3) {
+    left: 25%;
+    top: 15%;
+ }
+ .xiangqing .ant-layout-footer {
+    padding: 0;
+ }
+
+ .xiangqing .boxHeader .ant-avatar.ant-avatar-square.ant-avatar-image.fangda {
+    transform: scale(1.1)
+ }
+ .xiangqing .boxHeader .ant-avatar.ant-avatar-square.ant-avatar-image.suoxiao {
+    transform: scale(1)
+ }
+
+.xiangqing .ctxfooter {
+    position: relative;
+    background-color:#fafafa;
+}
+
+.xiangqing .ctxfooter .play {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: '宋体';
+    z-index: 10000;
+}
+.xiangqing .ctxfooter .download {
+    position: absolute;
+    left: 15%;
+    top: 0;
+    font-family: '宋体';
+    z-index: 10000;
+}
+.xiangqing .ctxfooter .fengxiang {
+    position: absolute;
+    right: 5%;
+    top:0;
+    font-family: '宋体';
+    width: 30%;
+    height: 20%;
+    line-height: 25%;
+    background-color: #fcf0e6;
+    color: #ea432c;
+    z-index: 10000;
+}
+
+.xiangqing .magnets {
+    position: relative;
+}
+
+.xiangqing .magnets .card-container {
+    width: 100%;
+    background: #f5f5f5;
+    overflow: hidden;
+    padding: 24px;
+    position: absolute;
+    left: 0%;
+    top: 10%;
+  }
+  .xiangqing .magnets .card-container > .ant-tabs-card > .ant-tabs-content {
+    height: 300px;
+    margin-top: -16px;
+    max-height: 400px;  /* 限制容器的高度 */
+    overflow-y: auto;   /* 垂直方向滚动条 */
+  }
+  
+  .xiangqing .magnets .card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+    background: #fff;
+    padding: 16px;
+  }
+  
+  .xiangqing .magnets .card-container > .ant-tabs-card > .ant-tabs-bar {
+    border-color: #fff;
+  }
+  
+  .xiangqing .magnets .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+    border-color: transparent;
+    background: transparent;
+  }
+  
+  .xiangqing .magnets  .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+    border-color: #fff;
+    background: #fff;
+  }
+
+  .xiangqing .magnets .magnet-row {
+    display: flex;
+    justify-content: space-between; /* 控制左右布局 */
+    align-items: center;            /* 垂直居中 */
+    padding: 10px 0;                /* 调整行距 */
+    border-bottom: 1px solid #f0f0f0; /* 给每行增加一个底部边框 */
+    overflow: visible;              /* 防止内容被隐藏 */
+  }
+
+  /* 控制左侧信息的布局 */
+  .xiangqing .magnets .magnet-left {
+    display: flex;
+    flex-direction: column; /* 让size和infoDesc一行一行显示 */
+    flex: 1;
+    white-space: nowrap; /* 阻止内容换行 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 使用省略号来显示溢出的部分 */
+  }
+
+  /* 控制右侧按钮的布局 */
+  .xiangqing .magnets .magnet-right {
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+  }
+
+  /* 设置容器滚动 */
+  .card-container {
+    max-height: 500px; /* 限制高度 */
+    overflow-y: auto; /* 垂直滚动条 */
+  }
+
+  /* 可选：增加hover效果 */
+  .xiangqing .magnets .magnet-row:hover {
+    background-color: #fafafa;
+  }
+
+
+ .fl {
+    float: left;
+  }
+  .fr {
+    float: right;
+  }
+
+ /* 360度旋转动画 */
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
