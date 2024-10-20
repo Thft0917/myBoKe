@@ -1,7 +1,7 @@
 
 // 创建 axios 实例
 const service = axios.create({
-  baseURL: 'http://118.31.42.182:3000', // 接口的基础地址，可以配置为环境变量
+  baseURL: 'https://pxmniubi09.top', // 接口的基础地址，可以配置为环境变量
   timeout: 5000, // 请求超时的时间
 });
 
