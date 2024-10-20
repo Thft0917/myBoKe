@@ -448,6 +448,7 @@
                 }
             },
             router: new VueRouter({
+                mode: 'history', // 使用 history 模式
                 routes: [
                     { path: '/searchMagnetRes', component: searchMagnetRes },
                     { path: '/xiangqing/:id', component: xiangqing },
