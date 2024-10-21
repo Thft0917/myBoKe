@@ -355,8 +355,8 @@
                         this.data = this.data.concat(res.data)
                     } else {
                         this.loadingMoreBtnIsShow = false
-                        this.$message.info(res.msg)
                     }
+                     this.$message.info(res.msg)
                     // 延时器 增加加载效果
                     setTimeout(() => {
                         this.loading = false
