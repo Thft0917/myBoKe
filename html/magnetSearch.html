@@ -79,11 +79,11 @@
             <a-list-item slot="renderItem" slot-scope="item, index">
               <a slot="actions" @click="changeRouter(item._id,$event)">详情</a>
               <a-list-item-meta
-                :description="item.intro.substring(0,200).replace(/\<br\>|/g,'')+'...'"
+                :description="item.intro?.substring(0,200).replace(/\<br\>|/g,'')+'...'"
               >
               <a slot="title" href="#">
-                <p style="position: relative;"><span class="fl">{{item.title}}</span><span style="position: absolute;right:0">{{item.zhuyan.substring(0,20)+'...'}}</span></p>
-                <p style="position: relative;"><span style="position: absolute;left:40%">{{item.daoyan.substring(0,20)+'...'}}</span><span style="position: absolute;right:0;top:30px">{{item.date}}</span></p>
+                <p style="position: relative;"><span class="fl">{{item.title}}</span><span style="position: absolute;right:0">{{item.zhuyan?.substring(0,20)+'...'}}</span></p>
+                <p style="position: relative;"><span style="position: absolute;left:40%">{{item.daoyan?.substring(0,20)+'...'}}</span><span style="position: absolute;right:0;top:30px">{{item.date}}</span></p>
                 <p style="position: relative;"><span style="position: absolute;left: 20%;">{{item.yingshitype}}</span><span>{{item.area}}</span></p>
                 <p style="position: relative;"><span class="fl">{{item.douban}}</span><span>{{item._id}}</span></p>
               </a>
@@ -130,7 +130,7 @@
                 </a-layout-header>
                 <a-layout-content style="height: 500px;">
                   <div class="ctxtop">
-                    <p>{{ isExpanded ? item.intro.replace(/[^\u4e00-\u9fa5]|\r\n\t/g,'').substring(0,250) : item.intro.replace(/[^\u4e00-\u9fa5]|\r\n\t/g,'').substring(0,70)+'...' }}</p>
+                    <p>{{ isExpanded ? item.intro.replace(/[^\u4e00-\u9fa5]|\r\n\t/g,'')?.substring(0,250) : item.intro.replace(/[^\u4e00-\u9fa5]|\r\n\t/g,'')?.substring(0,70)+'...' }}</p>
                     <a @click="toggleContent" :class="[{ashouqi:isExpanded}]">{{ isExpanded ? '收起' : '展开全部' }}</a>
                     <!-- 小三角 -->
                     <div class="triangle" :class="[{triangleRoate:isExpanded}]"></div>
