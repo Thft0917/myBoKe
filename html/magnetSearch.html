@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>明哥磁力链接搜索</title>
-    <link rel="stylesheet" href="../css/antd.min.css" />
-    <link rel="stylesheet" href="../css/magnet.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/antd.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
     <div id="app">
         <div id="components-layout-demo-basic">
-            <div id="mydiv">
+            <div id="mydiv" ref='zt'>
                 <a-row>
                     <a-col :span="4"></a-col>
                     <a-col :span="16">
@@ -23,7 +24,7 @@
                                 <div class="main">
                                     <div class="searchKuang">
                                         <div class="tubiao">
-                                            <img src="../imgs/tubiao.webp" alt="" srcset="">
+                                            <img src="tubiao.webp" alt="" srcset="">
                                         </div>
                                         <a-input-search v-model="value" placeholder="请输入影视作品名或导演名关键字" enter-button
                                             @search="onSearch" size="large" :allowClear="true" :loading="isLoading" />
@@ -46,15 +47,15 @@
             </div>
         </div>
     </div>
-    <script src="../js/axios.min.js"></script>
-    <script src="../js/crypto-js.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/crypto-js.js"></script>
     <!-- 封装的axios -->
-    <script src="../js/axs.js"></script>
-    <script src="../js/vue.min.js"></script>
-    <script src="../js/canvas-particle.js"></script>
-    <script src="../js/vue-router.min.js"></script>
-    <script src="../js/vuex.min.js"></script>
-    <script src="../js/antd.min.js"></script>
+    <script src="/js/axs.js"></script>
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/canvas-particle.js"></script>
+    <script src="/js/vue-router.min.js"></script>
+    <script src="/js/vuex.min.js"></script>
+    <script src="/js/antd.min.js"></script>
 
     <!-- 模版 -->
     <!-- 磁力链接搜索结果模版 -->
@@ -210,7 +211,9 @@
                 page: initialPage,
                 limit: initialLimit,
                 // 搜索按钮加载效果
-                isLoading: false
+                isLoading: false,
+                // 是否点击了详情组件详情按钮
+                isClickXiangqingBtn:false
             },
             mutations: {
                 updateShowComponent(state, showComponent) {
@@ -227,6 +230,10 @@
                 },
                 updateIsLoading(state, isLoading) {
                     state.isLoading = isLoading
+                },
+                updateIsClickXiangqingBtn(state,isClickXiangqingBtn) {
+                    state.isClickXiangqingBtn = isClickXiangqingBtn
+                
                 }
 
             },
@@ -356,7 +363,7 @@
                     } else {
                         this.loadingMoreBtnIsShow = false
                     }
-                     this.$message.info(res.msg)
+                    this.$message.info(res.msg)
                     // 延时器 增加加载效果
                     setTimeout(() => {
                         this.loading = false
@@ -369,7 +376,8 @@
                 },
                 changeRouter(id, e) {
                     e.preventDefault()
-                    this.$store.commit('updateShowComponent', '/xiangqing')
+                    this.$store.commit('updateShowComponent', `/xiangqing/${id}`)
+                    this.$store.commit('updateIsClickXiangqingBtn',true)
                     this.$router.replace(`/xiangqing/${id}`)
                 },
             
@@ -419,10 +427,19 @@
                 },
                 // 点击复制
                 async copyMagnet(magnet) {
-                    let res = await navigator.clipboard.writeText(magnet)
-                    // console.log('复制结果',res)
-                    if (!res) {
-                        this.$message.info('复制成功啦')
+                    try {
+                        // 创建一个临时的文本输入框来复制内容
+                        const input = document.createElement('textarea');
+                        input.value = magnet;
+                        document.body.appendChild(input);
+                        input.select();
+                        input.setSelectionRange(0, input.value.length); // 兼容移动设备
+                        document.execCommand('copy'); // 执行复制命令
+                        document.body.removeChild(input); // 移除临时文本框
+                        this.$message.info('复制成功啦');
+                    } catch (error) {
+                        this.$message.error('复制失败');
+                        console.error('复制出错', error);
                     }
                 },
                 onMouseEnter() {
@@ -444,14 +461,17 @@
                     // 搜索框输入内容
                     value: '',
                     // 搜索按钮加载效果
-                    isLoading: this.$store.state.isLoading
+                    isLoading: this.$store.state.isLoading,
+                    // 进入详情页后 滚动条设置为置顶
+                    isClickXiangqingBtn:this.$store.state.isClickXiangqingBtn
                 }
             },
             router: new VueRouter({
-                mode: 'hash', // 使用 history 模式
+                mode: 'hash', // 设置路由模式为 history
                 routes: [
                     { path: '/searchMagnetRes', component: searchMagnetRes },
                     { path: '/xiangqing/:id', component: xiangqing },
+                    { path: '/', component: searchMagnetRes },
                 ]
             }),
             store,
@@ -466,7 +486,7 @@
                         this.$store.commit('updateLimit', 10)
                         if (this.$route.path !== '/searchMagnetRes') {
                             this.$store.commit('updateShowComponent', '/searchMagnetRes')
-                            this.$router.replace({ path: '/searchMagnetRes' });
+                            this.$router.replace('/searchMagnetRes');
                         }
                     }
                 }
@@ -481,6 +501,19 @@
                         this.isLoading = newV
                     },
                     immediate: true
+                },
+                '$store.state.isClickXiangqingBtn': {
+                    async handler(newV,oldV) {
+                        if(newV) {
+                           // this.$refs.zt.$el.scrollTop = 0
+                           // 兼容性处理，确保滚动条置顶
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
+                            
+                            // 如果要自动重置状态以便多次触发
+                             this.$store.commit('updateIsClickXiangqingBtn', false);
+                        }
+                    }
                 }
             }
         }).$mount('#app')
